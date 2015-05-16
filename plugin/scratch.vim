@@ -1,7 +1,5 @@
 " scratch.vim
 
-let s:index = 0
-
 function! s:save_file()
 	if (!exists ('b:scratch'))
 		" Don't interfere with others' buffers
@@ -11,7 +9,7 @@ function! s:save_file()
 	let old = expand('%')
 	let new = expand('<afile>')
 
-	if ((old !~# '^__scratch__') || (new =~# '^__scratch__'))
+	if ((old != '') || (new == ''))
 		return
 	endif
 
@@ -25,16 +23,14 @@ function! s:save_file()
 	setlocal swapfile<
 endfunction
 
+
 function! CreateScratch(...)
 	let vertical = (a:0 > 0) ? a:1 : 0
 
-	let s:index += 1
-	let name = '__scratch__' . s:index
-
 	if (vertical)
-		execute 'vnew ' . name
+		execute 'vnew '
 	else
-		execute 'new ' . name
+		execute 'new '
 	endif
 
 	setlocal buftype=nofile
@@ -42,13 +38,14 @@ function! CreateScratch(...)
 	setlocal nobuflisted
 	setlocal noswapfile
 
-	let b:scratch = s:index
+	let b:scratch = 1
 endfunction
+
 
 augroup Scratch
 	autocmd!
 	autocmd BufNew * call <SID>save_file()
 augroup END
 
-nmap <silent> <S-F5> :<C-U>call CreateScratch(1)<CR>
+nnoremap <silent> <S-F5> :<C-U>call CreateScratch(1)<CR>
 
