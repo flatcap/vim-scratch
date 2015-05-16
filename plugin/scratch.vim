@@ -6,14 +6,12 @@ function! s:save_file()
 		return
 	endif
 
-	let old = expand('%')
-	let new = expand('<afile>')
-
-	if ((old != '') || (new == ''))
+	let name = expand('<afile>')
+	if (name == '')
 		return
 	endif
 
-	execute 'file ' . new
+	execute 'file ' . name
 	unlet b:scratch
 
 	" Set state to global defaults
@@ -26,13 +24,13 @@ endfunction
 
 function! CreateScratch(...)
 	let vertical = (a:0 > 0) ? a:1 : 0
-
 	if (vertical)
-		execute 'vnew '
+		vertical new
 	else
-		execute 'new '
+		new
 	endif
 
+	" Make the buffer invisible
 	setlocal buftype=nofile
 	setlocal bufhidden=delete
 	setlocal nobuflisted
