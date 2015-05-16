@@ -22,6 +22,19 @@ A typical workflow might be:
 6. Close the temporary workspace: `:q`
 7. Paste the data: `p`
 
+## Saving
+
+If you change your mind and want to save the data, then `:write` or `:saveas`.
+Vim will do the Right Thing&#8482;.
+
+```viml
+:w new-filename.txt
+
+:sav another-file.txt
+```
+
+A Vim `autocmd` automatically changes the settings to make the buffer into a normal file.
+
 ## Mappings
 
 By default, Vim-Scratch has two &lt;Plug&gt; mappings for you to use:
