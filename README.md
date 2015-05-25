@@ -37,11 +37,12 @@ A Vim `autocmd` automatically changes the settings to make the buffer into a nor
 
 ## Mappings
 
-By default, Vim-Scratch has two &lt;Plug&gt; mappings for you to use:
+By default, Vim-Scratch has three &lt;Plug&gt; mappings for you to use:
 
 ```viml
 <Plug>ScratchHorizontal
 <Plug>ScratchVertical
+<Plug>ScratchTab
 ```
 
 To use them add a line to your `.vimrc`
@@ -50,9 +51,11 @@ e.g.
 ```viml
 nmap <F3> <Plug>ScratchHorizontal
 nmap <F4> <Plug>ScratchVertical
+nmap <F5> <Plug>ScratchTab
 
 nmap <Leader>sh <Plug>ScratchHorizontal
 nmap <Leader>sv <Plug>ScratchVertical
+nmap <Leader>st <Plug>ScratchTab
 ```
 
 Alternatively, you can call the plugin from a script:
@@ -63,6 +66,9 @@ call scratch#CreateBuffer(0)
 
 " Create Vertical split
 call scratch#CreateBuffer(1)
+
+" Create Tab
+call scratch#CreateBuffer(2)
 ```
 
 ## Configuration

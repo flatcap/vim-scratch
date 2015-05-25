@@ -3,7 +3,7 @@
 " Website:      https://flatcap.org
 " Copyright:    2012-2015 Richard Russon
 " License:      GPLv3 <http://fsf.org/>
-" Version:      1.0
+" Version:      1.1
 
 if (exists ('g:loaded_scratch') || &cp || (v:version < 700))
 	finish
@@ -12,4 +12,5 @@ let g:loaded_scratch = 1
 
 nnoremap <silent> <Plug>ScratchHorizontal :<C-U>call scratch#CreateBuffer(0)<CR>
 nnoremap <silent> <Plug>ScratchVertical   :<C-U>call scratch#CreateBuffer(1)<CR>
+nnoremap <silent> <Plug>ScratchTab        :<C-U>call scratch#CreateBuffer(2)<CR>
 

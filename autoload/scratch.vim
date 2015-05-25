@@ -20,11 +20,13 @@ function! s:save_file()
 endfunction
 
 function! scratch#CreateBuffer (...)
-	let vertical = (a:0 > 0) ? a:1 : 0
-	if (vertical)
+	let form = (a:0 > 0) ? a:1 : 0
+	if (form == 0)
+		new
+	elseif (form == 1)
 		vertical new
 	else
-		new
+		tab new
 	endif
 
 	" Make the buffer invisible
